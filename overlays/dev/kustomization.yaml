@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 753629740474.dkr.ecr.ap-northeast-2.amazonaws.com/groomi-web
   newName: 753629740474.dkr.ecr.ap-northeast-2.amazonaws.com/groomi-web
-  newTag: abcdefg
+  newTag: goormi
 resources:
 - ../../base
 patchesStrategicMerge:
