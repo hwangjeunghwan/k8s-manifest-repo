@@ -1,15 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: demo-frontend
-  namespace: default
+  name: goormi-web
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/health"
   labels:
     env: dev
 spec:
   selector:
-    matchLabels:
-      app: frontend-fargate
-  template:
-    metadata:
-      labels:
-        app: frontend-fargate
+    app: goormi-fargate
