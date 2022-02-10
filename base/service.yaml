@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goormi-web
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/health"
+spec:
+  selector:
+    app: goormi-fargate           # goormi-web
+  type: NodePort
+  ports:
+    - port: 80		# 서비스가 생성할 포트
+      targetPort: 30020	# 서비스가 접근할 pod의 포트
+      nodePort: 30020
+      protocol: TCP

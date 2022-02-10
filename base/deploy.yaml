@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goormi-web
+  namespace: default
+spec:
+  replicas: 1         #3
+  selector:
+    matchLabels:
+      app: goormi-fargate           # goormi-web
+  template:
+    metadata:
+      labels:
+        app: goormi-fargate          # goormi-web
+    spec:
+      containers:
+        - name: goormi-web
+          image: 753629740474.dkr.ecr.ap-northeast-2.amazonaws.com/groomi-web:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30020
+          resources:           #####
+            requests:           #####
+              cpu: 250m           #####
+            limits:     	      #####
+              cpu: 500m           #####
